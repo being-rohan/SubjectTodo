@@ -1,0 +1,45 @@
+<table class="table table-bordered mt-4 text-center" *ngIf="stdArr.length>0;else notodo">
+    <thead>
+        <tr>
+            <th>srNo</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>email</th>
+            <th>conatct</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let skill of stdArr ;index as i">
+
+            <td>
+                {{i+1}}
+            </td>
+            <td>
+                {{skill.fname}}
+            </td>
+            <td>
+                {{skill.lname}}
+            </td>
+            <td>
+                {{skill.email}}
+            </td>
+            <td>
+                {{skill.contact}}
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="onedit(skill)">edit</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="ondelete(skill)">delete</button>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>
+<ng-template #notodo>
+    <p class="alert alert-info mt-4" *ngIf="stdArr.length===0">
+      not added!
+    </p>
+    </ng-template>

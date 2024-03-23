@@ -1,0 +1,20 @@
+<div class="card mt-4">
+    <div class="card-body">
+        <form [formGroup]="todoForm" (ngSubmit)="onadd()">
+            <strong>
+
+                <div class="form-group">
+                    <label for="Todoitem">Todoitem</label>
+                    <input class="form-control" formControlName="todoitem">
+                </div>
+            </strong>
+            <button class="btn btn-primary" [disabled]="todoForm.invalid" *ngIf="!editMode">
+                ADD ITEM
+            </button>
+            <button class="btn btn-primary" [disabled]="todoForm.invalid" *ngIf="editMode" type="button" (click)="onupdate()">
+             update
+            </button>
+         
+        </form>
+    </div>
+</div>
