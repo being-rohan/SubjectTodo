@@ -39,14 +39,16 @@ export class TodoFormComponent implements OnInit {
     })
   }
 
-  
+
   onadd() {
     if (this.todoForm.valid) {
       let obj: Itodo = { ... this.todoForm.value, id: this._uuid.uuid() }
 
       this._todoService.todoSubject$.next(obj)
+      this.editMode = true
 
 
+      this.todoForm.reset()
     }
   }
 
@@ -57,6 +59,9 @@ export class TodoFormComponent implements OnInit {
       let updateobj: Itodo = { ...this.todoForm.value, todoid: this.idGet.todoid }
       this._todoService.update(updateobj)
       console.log(updateobj);
+      this.editMode = false
+
+      this.todoForm.reset()
 
     }
   }

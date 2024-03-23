@@ -42,6 +42,7 @@ export class StiudentFormComponent implements OnInit {
     if (this.stdForm.valid) {
       let obj: Istd = { ... this.stdForm.value, stdId: this._uuid.uuid() }
       this._stdSer.stdadd$.next(obj)
+      this.stdForm.reset()
 
 
     }
@@ -54,6 +55,8 @@ export class StiudentFormComponent implements OnInit {
 
       let obj: Istd = { ... this.stdForm.value, stdId: this.idGet.stdId }
       this._stdSer.update(obj)
+      this.editMode = false
+      this.stdForm.reset()
     }
   }
 
